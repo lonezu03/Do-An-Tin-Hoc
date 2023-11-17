@@ -35,10 +35,10 @@
             this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
-            this.btnXemTK = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lst = new System.Windows.Forms.ListBox();
             this.lst2 = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,16 +107,6 @@
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
-            // btnXemTK
-            // 
-            this.btnXemTK.Location = new System.Drawing.Point(561, 329);
-            this.btnXemTK.Name = "btnXemTK";
-            this.btnXemTK.Size = new System.Drawing.Size(89, 52);
-            this.btnXemTK.TabIndex = 2;
-            this.btnXemTK.Text = "Xem";
-            this.btnXemTK.UseVisualStyleBackColor = true;
-            this.btnXemTK.Click += new System.EventHandler(this.btnXemTK_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtMatKhau);
@@ -147,6 +137,16 @@
             this.lst2.TabIndex = 4;
             this.lst2.SelectedIndexChanged += new System.EventHandler(this.lst2_SelectedIndexChanged);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(564, 329);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 52);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Điền nhanh";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -155,7 +155,7 @@
             this.Controls.Add(this.lst2);
             this.Controls.Add(this.lst);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnXemTK);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.label3);
@@ -179,10 +179,10 @@
         private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.Button btnHuy;
-        private System.Windows.Forms.Button btnXemTK;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox lst;
         private System.Windows.Forms.ListBox lst2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

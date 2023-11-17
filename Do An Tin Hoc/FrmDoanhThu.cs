@@ -42,7 +42,7 @@ namespace Do_An_Tin_Hoc
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            CXuLy.dsDoanhThu.Clear();
+            xuLy.XoaDoanhThu();
             xuLy.luuFileDoanhThu(diachi2);
             HienThi(xuLy.layDSDoanhThu());
         }

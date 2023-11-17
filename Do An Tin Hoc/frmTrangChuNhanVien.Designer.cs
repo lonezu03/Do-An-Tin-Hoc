@@ -55,6 +55,7 @@
             this.btnBanHang.TabIndex = 4;
             this.btnBanHang.Text = "Bán Hàng";
             this.btnBanHang.UseVisualStyleBackColor = true;
+            this.btnBanHang.Click += new System.EventHandler(this.btnBanHang_Click);
             // 
             // btnDiemDanh
             // 
@@ -75,6 +76,7 @@
             this.btnCaLam.TabIndex = 6;
             this.btnCaLam.Text = "Xem Ca Làm";
             this.btnCaLam.UseVisualStyleBackColor = true;
+            this.btnCaLam.Click += new System.EventHandler(this.btnCaLam_Click);
             // 
             // label1
             // 

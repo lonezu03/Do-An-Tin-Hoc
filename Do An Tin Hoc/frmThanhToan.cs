@@ -52,8 +52,8 @@ namespace Do_An_Tin_Hoc
 
                 CMatHang temp =new CMatHang(ten, giaTien, soLuong, false);
                 temp.m_NgayMuaHang = DateTime.Now;
-                CXuLy.dsDoanhThu.Add(temp);
-              
+
+                xuLy.ThemMHDT(temp);
                 
                 xuLy.Sua(matHang);               
             }

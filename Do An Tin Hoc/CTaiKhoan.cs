@@ -7,11 +7,25 @@ using System.Windows.Forms;
 
 namespace Do_An_Tin_Hoc
 {
-    internal class TaiKhoan
+    internal class CTaiKhoan
     {
         private string taiKhoan;
         private string matKhau;
-        public bool loaiTK;
+        private bool loaiTK;
+
+        private static bool tk;
+        public void Test()
+        {
+            Console.WriteLine("HEHE");
+        }
+        public static bool getTK()
+        {
+            return tk;
+        }
+        public static void setTK(bool loaitk)
+        {
+            tk = loaitk;
+        }
 
         public string Taikhoan{
             get => taiKhoan;
@@ -27,12 +41,19 @@ namespace Do_An_Tin_Hoc
             get => loaiTK;
             set => loaiTK=value;
         }
-        public TaiKhoan(string taikhoan,string matkhau,bool loaitk)
+        public CTaiKhoan(string taikhoan,string matkhau,bool loaitk)
         {
             this.taiKhoan=taikhoan;
             this.matKhau=matkhau;
             this.loaiTK=loaitk;
         }
+        public CTaiKhoan()
+        {
+            this.taiKhoan = "";
+            this.matKhau = "";
+            this.loaiTK = tk; 
+        }
+
         public string ShowTK()
         {
             return this.taiKhoan;

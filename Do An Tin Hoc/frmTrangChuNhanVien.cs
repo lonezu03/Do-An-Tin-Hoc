@@ -19,7 +19,26 @@ namespace Do_An_Tin_Hoc
 
         private void btnKho_Click(object sender, EventArgs e)
         {
+           frmKho frmKho = new frmKho();
+            this.Hide();
+            frmKho.ShowDialog();
+            this.Show();
+        }
 
+        private void btnBanHang_Click(object sender, EventArgs e)
+        {
+            frmBanHang frmBanHang = new frmBanHang();
+            this.Hide();
+            frmBanHang.ShowDialog();
+            this.Show();
+        }
+
+        private void btnCaLam_Click(object sender, EventArgs e)
+        {
+            frmCaLam frmCaLam = new frmCaLam();
+            this.Hide();
+            frmCaLam.ShowDialog();
+            this.Show();
         }
     }
 }

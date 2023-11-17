@@ -16,7 +16,7 @@ namespace Do_An_Tin_Hoc
     
     public partial class frmDangNhap : Form
     {
-        List<TaiKhoan> danhsachTK = new List<TaiKhoan>();
+        List<CTaiKhoan> danhsachTK = new List<CTaiKhoan>();
         public frmDangNhap()
         {
             InitializeComponent();
@@ -24,8 +24,9 @@ namespace Do_An_Tin_Hoc
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ReadFile("DanhSachTaiKhoan.txt");
             
+            ReadFile("DanhSachTaiKhoan.txt");
+            LoadTKMK();
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -55,10 +56,9 @@ namespace Do_An_Tin_Hoc
                             temp = true;
                         }
                         else temp = false;
-                        TaiKhoan taikhoan = new TaiKhoan(strings2[a], strings2[a + 1], temp);
+                        CTaiKhoan taikhoan = new CTaiKhoan(strings2[a], strings2[a + 1], temp);
                         danhsachTK.Add(taikhoan);
-                    }
-                   
+                    }                   
                 }  
                 
             }
@@ -73,13 +73,15 @@ namespace Do_An_Tin_Hoc
                     {
                         this.Hide();
                         frmTrangChuAdmin admin = new frmTrangChuAdmin();
+                        CTaiKhoan.setTK(danhsachTK[i].LoaiTK);
                         admin.ShowDialog();
-                        this.Close();
+                        this.Close();                        
                         return true;
                     }else
                     {
                         this.Hide();
                         frmTrangChuNhanVien nhanvien = new frmTrangChuNhanVien();
+                        CTaiKhoan.setTK(danhsachTK[i].LoaiTK);
                         nhanvien.ShowDialog();
                         this.Close();
                         return true;
@@ -121,21 +123,49 @@ namespace Do_An_Tin_Hoc
 
         private void btnXemTK_Click(object sender, EventArgs e)
         {
-            for(int i=0;i<danhsachTK.Count;i++)
+            
+        }
+        public void LoadTKMK()
+        {
+            for (int i = 0; i < danhsachTK.Count; i++)
             {
                 lst.Items.Add(danhsachTK[i].Taikhoan);
                 lst2.Items.Add(danhsachTK[i].Matkhau);
             }
         }
-
         private void lst_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+                if (lst.SelectedItem.ToString() == "Admin")
+                {
+                    lst2.SelectedItem = lst.Items[0];
+                }
+                else if (lst.SelectedItem.ToString() == "Duong")
+                { 
+                    lst2.SelectedItem = lst.Items[1];
+                }   
             
         }
 
         private void lst2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (lst.SelectedItem.ToString() == "Admin")
+            {
+                lst2.SelectedItem = lst2.Items[0];
+                txtTaiKhoan.Text = lst.SelectedItem.ToString();
+                txtMatKhau.Text= lst2.SelectedItem.ToString();
+            }
+            else if (lst.SelectedItem.ToString() == "Duong")
+            {
+                lst2.SelectedItem = lst2.Items[1];
+                txtTaiKhoan.Text = lst.SelectedItem.ToString();
+                txtMatKhau.Text = lst2.SelectedItem.ToString();
+            }
         }
     }
 }

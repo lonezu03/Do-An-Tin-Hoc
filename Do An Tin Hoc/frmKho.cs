@@ -16,6 +16,7 @@ namespace Do_An_Tin_Hoc
     {
         private readonly CXuLy xuLy = new CXuLy();
         string diachi = "data.txt";
+        CTaiKhoan taiKhoan = new CTaiKhoan();
         public frmKho()
         {
             InitializeComponent();
@@ -23,6 +24,9 @@ namespace Do_An_Tin_Hoc
        
         private void KhoVaNhapKho_Load(object sender, EventArgs e)
         {
+            //CTaiKhoan.getTK(taiKhoan.LoaiTK)
+            //CTaiKhoan.getTK(true);
+            ConfigButton(CTaiKhoan.getTK());
             dgv.ReadOnly = true;
             
             if (xuLy.docFile(diachi))
@@ -35,6 +39,26 @@ namespace Do_An_Tin_Hoc
                 MessageBox.Show("File lỗi!");
             }
            
+        }
+        private void ConfigButton(bool loaitk)
+        {
+            if (!loaitk)
+            {                               
+                btnThemHang.Visible = false;
+                btnSua.Visible = false;
+                btnXoaHang.Visible = false;
+                btnNhapKho.Location= btnThemHang.Location;
+                btnNhapKho.Location = new Point(btnNhapKho.Location.X+40,btnNhapKho.Location.Y+70);
+
+            }
+            else
+            {
+
+                btnThemHang.Visible = true;
+                btnSua.Visible = true;
+                btnXoaHang.Visible = true;
+               
+            }
         }
         private void LoadForm()
         {
@@ -59,7 +83,7 @@ namespace Do_An_Tin_Hoc
                 matHang.m_TenMatHang = txtMH.Text;
                 matHang.m_SoLuong = Convert.ToInt32(txtSL.Text);
                 matHang.m_GiaTien = Convert.ToInt32(txtGiaTien.Text);
-                xuLy.dsMatHang.Add(txtMH.Text, matHang);
+                xuLy.ThemMH(matHang);
               
                 HienThi(xuLy.layDSMatHang());
                 xuLy.luuFile(diachi);
@@ -73,11 +97,11 @@ namespace Do_An_Tin_Hoc
         private void LoadData()
         {
             CMatHang cMatHang = new CMatHang("Áo",100000,12,false);
-            xuLy.dsMatHang.Add(cMatHang.m_TenMatHang, cMatHang);
+            xuLy.ThemMH(cMatHang);
             CMatHang cMatHang1 = new CMatHang("Quần", 200000, 12, false);
-            xuLy.dsMatHang.Add(cMatHang1.m_TenMatHang, cMatHang1);
+            xuLy.ThemMH(cMatHang1);
             CMatHang cMatHang2 = new CMatHang("Nón", 50000, 12, false);
-            xuLy.dsMatHang.Add(cMatHang2.m_TenMatHang, cMatHang2);
+            xuLy.ThemMH(cMatHang2);
         }
         Dictionary<string,CMatHang> dsMaHang= new Dictionary<string, CMatHang>();
        

@@ -30,7 +30,7 @@ namespace Do_An_Tin_Hoc
 
         private void AddItems()
         {
-            foreach(KeyValuePair<string,CMatHang> key in xuLy.dsMatHang)
+            foreach(KeyValuePair<string,CMatHang> key in xuLy.GetDSMH())
             {
                 cboTenMatHang.Items.Add(key.Key);
             }
@@ -39,9 +39,9 @@ namespace Do_An_Tin_Hoc
        
         private void cboTenMatHang_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboTenMatHang.SelectedIndex != -1)
+            if(cboTenMatHang.SelectedIndex != -1)
             { 
-                txtGiaTien.Text = xuLy.dsMatHang[cboTenMatHang.SelectedItem.ToString()].m_GiaTien.ToString();
+                txtGiaTien.Text = xuLy.GetDSMH()[cboTenMatHang.SelectedItem.ToString()].m_GiaTien.ToString();
             }
         }
       
@@ -72,7 +72,7 @@ namespace Do_An_Tin_Hoc
         private Dictionary<string, CMatHang> dsChonMua = new Dictionary<string, CMatHang>();
         private void btnThemHang_Click(object sender, EventArgs e)
         {
-            if (!Tim(cboTenMatHang.SelectedItem.ToString(), xuLy.dsMatHang) && Tim(cboTenMatHang.SelectedItem.ToString(), dsChonMua))
+            if (!Tim(cboTenMatHang.SelectedItem.ToString(), xuLy.GetDSMH()) && Tim(cboTenMatHang.SelectedItem.ToString(), dsChonMua))
             {
                 int tongtien = Convert.ToInt32(txtGiaTien.Text) * Convert.ToInt32(txtSoLuong.Text);
                 CMatHang matHang = new CMatHang(cboTenMatHang.SelectedItem.ToString(), tongtien, Convert.ToInt32(txtSoLuong.Text), false);
@@ -94,7 +94,7 @@ namespace Do_An_Tin_Hoc
         {
             foreach(KeyValuePair<string,CMatHang> item in dsChonMua)
             {
-                xuLy.dsMatHang[item.Key].m_SoLuong -=item.Value.m_SoLuong;
+                xuLy.GetDSMH()[item.Key].m_SoLuong -=item.Value.m_SoLuong;
             }
         }
       
@@ -130,9 +130,9 @@ namespace Do_An_Tin_Hoc
         {
             try
             {
-                if ((xuLy.dsMatHang[cboTenMatHang.Text].m_SoLuong - int.Parse(txtSoLuong.Text)) < 0 && (int.Parse(txtSoLuong.Text)) > 0)
+                if ((xuLy.GetDSMH()[cboTenMatHang.Text].m_SoLuong - int.Parse(txtSoLuong.Text)) < 0 && (int.Parse(txtSoLuong.Text)) > 0)
                 {
-                    MessageBox.Show("Không đủ số lượng\n Chỉ còn" + xuLy.dsMatHang[cboTenMatHang.Text].m_SoLuong);
+                    MessageBox.Show("Không đủ số lượng\n Chỉ còn" + xuLy.GetDSMH()[cboTenMatHang.Text].m_SoLuong);
                 }
             }catch { }
             

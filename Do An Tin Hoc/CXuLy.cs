@@ -12,14 +12,22 @@ namespace Do_An_Tin_Hoc
     internal class CXuLy
     {
         private static readonly BinaryFormatter bf = new BinaryFormatter();
-        public Dictionary<string,CMatHang> dsMatHang = new Dictionary<string,CMatHang>();
-        public Dictionary<string,CNhanSu> dsNhanSu = new Dictionary<string,CNhanSu>();
-        public static List<CMatHang> dsDoanhThu = new List<CMatHang>();
+        private Dictionary<string,CMatHang> dsMatHang = new Dictionary<string,CMatHang>();
+        private Dictionary<string,CNhanSu> dsNhanSu = new Dictionary<string,CNhanSu>();
+        private static List<CMatHang> dsDoanhThu = new List<CMatHang>();
+
+        
+        //Xử Lý Đăng Nhập
+       // public bool 
        
         //Xử Lý Doanh Thu 
         public List<CMatHang> layDSDoanhThu()
         {
             return CXuLy.dsDoanhThu.ToList();
+        }
+        public void XoaDoanhThu()
+        {
+            dsDoanhThu.Clear();
         }
         public bool docFileDoanhThu(string tenfile)
         {
@@ -34,6 +42,21 @@ namespace Do_An_Tin_Hoc
             {
                 return false;
             }
+        }
+        public void ThemMHDT(CMatHang mH)
+        {         
+          dsDoanhThu.Add( mH);
+        }
+       public bool TimMHDT(string tenMH)
+        {
+            foreach (CMatHang item in dsDoanhThu)
+            {
+                if (item.m_TenMatHang == tenMH)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         public bool luuFileDoanhThu(string tenfile)
         {
@@ -54,7 +77,10 @@ namespace Do_An_Tin_Hoc
         {
             return dsMatHang.Values.ToList();
         }
-
+        public Dictionary<string,CMatHang> GetDSMH()
+        {
+            return dsMatHang;
+        }
         public CMatHang Tim(string ma)
         {
             if (dsMatHang.ContainsKey(ma))

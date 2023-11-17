@@ -10,7 +10,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace Do_An_Tin_Hoc
 {
@@ -98,7 +98,7 @@ namespace Do_An_Tin_Hoc
         {
             if(cboTenMatHang.SelectedIndex !=-1)
             {
-                txtGiaTien.Text= xuLy.dsMatHang[cboTenMatHang.Text].m_GiaTien.ToString();
+                txtGiaTien.Text= xuLy.GetDSMH()[cboTenMatHang.Text].m_GiaTien.ToString();
                
             }
         }
@@ -137,7 +137,7 @@ namespace Do_An_Tin_Hoc
                        
                         if (dgv.Rows[i].Cells[2].Value.ToString() == cboTenMatHang.Text)
                         {
-                            dgv.Rows[i].Cells[0].Value = Convert.ToInt32(txtSoLuong.Text) - Convert.ToInt32(xuLy.dsMatHang[cboTenMatHang.Text].m_SoLuong);
+                            dgv.Rows[i].Cells[0].Value = Convert.ToInt32(txtSoLuong.Text) - Convert.ToInt32(xuLy.GetDSMH()[cboTenMatHang.Text].m_SoLuong);
                             break;
                         }
                     }
